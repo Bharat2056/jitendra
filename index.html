@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="np" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jitendra Kumar Shrestha | District Chairman, Nepali Congress, Lalitpur</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e11d48; 
+            --accent: #1e40af; 
+            --dark: #020617; 
+            --paper: #fdfdfd; 
+            --success: #16a34a;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--paper);
+            color: var(--dark);
+        }
+        .font-nepali { font-family: 'Mukta', sans-serif; }
+        .font-display { font-family: 'Poppins', sans-serif; }
+
+        .noise {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.02;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .bg-grid {
+            background-image: radial-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        @keyframes blob-float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -40px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+        .animate-blob { animation: blob-float 18s infinite ease-in-out; }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        
+        /* Typography responsiveness */
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            line-height: 0.95;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.95rem;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px -10px rgba(225, 29, 72, 0.4);
+            background: #be123c;
+        }
+
+        .btn-poster {
+            background: #e11d48; /* rose-600 */
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+        .btn-poster:hover {
+            background: #881337; /* rose-900 */
+        }
+
+        .journey-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .journey-item:hover {
+            background-color: rgba(0, 0, 0, 0.01);
+            padding-left: 1rem;
+        }
+
+        #cursor {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transition: transform 0.15s ease;
+            mix-blend-mode: multiply;
+        }
+
+        @keyframes float-y {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float { animation: float-y 3s ease-in-out infinite; }
+
+        @keyframes grow {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-grow { animation: grow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+        .leaf-node {
+            position: absolute;
+            background: var(--success);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            white-space: nowrap;
+            z-index: 10;
+        }
+        @media (min-width: 768px) {
+            .leaf-node { font-size: 0.8rem; padding: 4px 12px; }
+        }
+
+        .tree-trunk {
+            background: #5D4037;
+            position: relative;
+            border-radius: 4px;
+        }
+
+        /* Swastik Voting Stamp */
+        .stamp-area { position: relative; overflow: hidden; }
+        .swastik { position: relative; width: 40px; height: 40px; display: inline-block; }
+        @media (min-width: 768px) { .swastik { width: 50px; height: 50px; } }
+        
+        .swastik::before { content: ''; position: absolute; width: 5px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); background: #2563EB; }
+        .swastik::after { content: ''; position: absolute; width: 100%; height: 5px; top: 50%; left: 0; transform: translateY(-50%); background: #2563EB; }
+        .arm-1 { position: absolute; width: 22px; height: 5px; top: 0; right: 0; background: #2563EB; }
+        .arm-2 { position: absolute; width: 22px; height: 5px; bottom: 0; left: 0; background: #2563EB; }
+        .arm-3 { position: absolute; width: 5px; height: 22px; top: 0; left: 0; background: #2563EB; }
+        .arm-4 { position: absolute; width: 5px; height: 22px; bottom: 0; right: 0; background: #2563EB; }
+    </style>
+</head>
+<body class="overflow-x-hidden selection:bg-rose-500 selection:text-white">
+
+    <div class="noise"></div>
+    <div id="cursor" class="hidden md:block"></div>
+
+    <!-- Navigation -->
+    <div class="fixed top-4 md:top-6 left-0 right-0 z-[100] flex justify-center px-4">
+        <header class="glass-header rounded-full border px-2 py-1.5 shadow-xl w-full max-w-[calc(100vw-32px)] md:max-w-max">
+            <div class="flex items-center gap-1 justify-between md:justify-start">
+                <nav class="flex items-center gap-1 overflow-x-auto no-scrollbar scroll-smooth px-2">
+                    <a class="px-2 md:px-4 py-2 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all text-slate-500 hover:text-dark hover:bg-slate-100/50 whitespace-nowrap" href="#home">Home</a>
+                    <a class="px-2 md:px-4 py-2 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all text-slate-500 hover:text-dark hover:bg-slate-100/50 whitespace-nowrap" href="#profile">Profile</a>
+                    <a class="px-2 md:px-4 py-2 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all text-slate-500 hover:text-dark hover:bg-slate-100/50 whitespace-nowrap" href="#journey">Journey</a>
+                    <a class="px-2 md:px-4 py-2 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all text-slate-500 hover:text-dark hover:bg-slate-100/50 whitespace-nowrap" href="#vision">Vision</a>
+                    <a class="px-2 md:px-4 py-2 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all text-slate-500 hover:text-dark hover:bg-slate-100/50 whitespace-nowrap" href="#vote">Vote</a>
+                    <a class="px-2 md:px-4 py-2 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all text-slate-500 hover:text-dark hover:bg-slate-100/50 whitespace-nowrap" href="https://stories.jitendrakumarshrestha.com/" target="_blank">Blog</a>
+                </nav>
+                <div class="hidden md:flex items-center shrink-0 pl-2 border-l border-slate-200">
+                    <a href="#campaign" class="btn-poster whitespace-nowrap inline-block text-center">
+                        Join Us
+                    </a>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid">
+        <div class="absolute top-[10%] -left-[5%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-rose-500/5 rounded-full blur-[80px] md:blur-[120px] animate-blob"></div>
+        <div class="absolute bottom-[10%] -right-[5%] w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-blue-600/5 rounded-full blur-[80px] md:blur-[120px] animate-blob" style="animation-delay: 4s;"></div>
+        
+        <div class="container mx-auto px-6 lg:px-12 pt-24 md:pt-28 pb-12 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left animate-fade-in-up">
+                    <div class="inline-flex items-center gap-2 bg-white shadow-lg shadow-slate-200/40 border border-slate-100 text-slate-500 font-bold px-4 py-1.5 md:px-5 md:py-2 rounded-full text-[9px] md:text-[10px] mb-6 md:mb-8 uppercase tracking-[0.2em]">
+                        <img src="./images/logo.webp" alt="NC" class="w-5 h-5 md:w-5 md:h-5"/>
+                        District Chairman • Lalitpur
+                    </div>
+                    <h1 class="hero-title font-black text-slate-900 font-display tracking-tighter uppercase mb-6 md:mb-8">
+                        Jitendra <br> <span class="text-primary italic">Kumar</span> <br> Shrestha
+                    </h1>
+                    <p class="text-lg md:text-2xl font-nepali text-slate-500 mb-8 md:mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium italic">
+                        नेपाली काँग्रेस ललितपुर जिल्ला सभापति। <br> समाज रूपान्तरणको ३ दशक लामो अविचलित यात्रा।
+                    </p>
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <a href="#campaign" class="btn-primary bg-rose-600 hover:bg-rose-900">
+                            <i data-lucide="users" class="w-5 h-5"></i> अभियानमा जोडिनुहोस्
+                        </a>
+                        <a class="bg-white border border-slate-200 text-slate-800 px-6 py-3.5 md:px-8 md:py-4 rounded-full font-bold hover:border-dark transition-all text-sm md:text-base" href="#profile">
+                            मेरो बारेमा
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative flex justify-center animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="relative">
+                        <div class="absolute -inset-4 rounded-full border border-slate-100 animate-pulse-expand opacity-40"></div>
+                        <div class="relative w-64 h-64 sm:w-80 sm:h-80 md:w-[480px] md:h-[480px] rounded-full overflow-hidden border-[8px] md:border-[12px] border-white shadow-2xl bg-white group">
+                            <img src="https://www.jitendrakumarshrestha.com/assets/img/profile.jpg" alt="Jitendra Shrestha" class="w-full h-full object-cover img-professional group-hover:scale-105 transition-transform duration-1000"/>
+                        </div>
+                        <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-white px-5 py-2 md:px-8 md:py-3 rounded-xl shadow-xl border border-slate-50 flex flex-col items-center w-max">
+                            <span class="text-dark text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] opacity-40">Active Leadership</span>
+                            <span class="text-dark text-[9px] md:text-xs font-bold tracking-widest font-display">LALITPUR DISTRICT CHAIRMAN</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Info -->
+    <section id="profile" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="relative overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-slate-950 p-6 md:p-16 text-white shadow-2xl animate-fade-in-up">
+                <div class="absolute top-0 right-0 w-[60%] h-full bg-[radial-gradient(circle_at_top_right,rgba(225,29,72,0.1),transparent_60%)]"></div>
+                
+                <div class="relative z-10 grid lg:grid-cols-12 gap-12 md:gap-16 items-start">
+                    <div class="lg:col-span-7">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-rose-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8">
+                            <i data-lucide="info" class="w-4 h-4"></i> Profile Details
+                        </div>
+                        <h3 class="text-3xl md:text-6xl font-black mb-6 md:mb-8 leading-tight font-display tracking-tighter">
+                            A Legacy of <span class="text-primary italic">Integrity.</span>
+                        </h3>
+                        <p class="font-nepali text-lg md:text-xl text-slate-400 leading-relaxed font-light mb-12">
+                            जितेन्द्र कुमार श्रेष्ठ ललितपुरका एक निष्ठावान र समर्पित राजनीतिक व्यक्तित्व हुनुहुन्छ। उहाँ लामो समयदेखि नेपाली काँग्रेसको विभिन्न जिम्मेवारीमा रहेर समाज र राष्ट्रको सेवामा निरन्तर सक्रिय हुनुहुन्छ।
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-8 font-nepali">
+                            <div class="space-y-6">
+                                <div class="group">
+                                    <span class="text-[13px] md:text-[15px] uppercase font-bold opacity-30 block tracking-widest mb-1">जन्म मिति</span>
+                                    <span class="text-lg font-bold text-white">बि.स २०२२-१०-१६</span>
+                                </div>
+                                <div class="group">
+                                    <span class="text-[13px] md:text-[15px] uppercase font-bold opacity-30 block tracking-widest mb-1">शिक्षा</span>
+                                    <span class="text-lg font-bold text-white">बि.कम (B.Com)</span>
+                                </div>
+                            </div>
+                            <div class="space-y-6">
+                                <div class="group">
+                                    <span class="text-[13px] md:text-[15px] uppercase font-bold opacity-30 block tracking-widest mb-1">स्थाई ठेगाना</span>
+                                    <span class="text-lg font-bold text-white">ललितपुर महानगरपालिका-३, पुल्चोक</span>
+                                </div>
+                                <div class="group">
+                                    <span class="text-[13px] md:text-[15px] uppercase font-bold opacity-30 block tracking-widest mb-1">ईमेल</span>
+                                    <span class="text-lg font-bold text-white break-all">jitendramaleku@gmail.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="bg-white/5 p-8 md:p-10 rounded-[2.5rem] border border-white/5 shadow-inner">
+                            <h4 class="text-[10px] font-black text-primary uppercase tracking-widest mb-8 border-b border-white/5 pb-4">Digital Connect</h4>
+                            <div class="space-y-6 font-nepali">
+                                <a href="tel:9851005459" class="flex justify-between items-center group hover:text-primary transition-colors">
+                                    <span class="opacity-40 text-[15px] font-bold">फोन नम्बर</span>
+                                    <span class="font-bold text-lg">+९७७-९८५१००५४५९</span>
+                                </a>
+                                <a href="https://www.jitendrakumarshrestha.com" target="_blank" class="flex justify-between items-center group hover:text-primary transition-colors">
+                                    <span class="opacity-40 text-[15px] font-bold">आधिकारिक वेब</span>
+                                    <span class="font-bold text-lg underline underline-offset-4 break-all">jitendrakumarshrestha.com</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="bg-primary p-10 rounded-[2.5rem] flex flex-col items-center justify-center text-center shadow-2xl">
+                            <span class="text-5xl font-black mb-1 font-display tracking-tighter">६०</span>
+                            <span class="text-[9px] font-black uppercase tracking-[0.4em] opacity-80">Years of Service</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Legacy Connection -->
+    <section class="py-16 md:py-24 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto bg-white rounded-[2.5rem] p-8 md:p-16 shadow-xl border border-slate-100 relative overflow-hidden">
+                <div class="text-center mb-12 md:mb-16 relative z-10">
+                    <h2 class="text-3xl md:text-5xl font-black tracking-tighter font-display uppercase italic text-slate-900">Connecting Visions</h2>
+                    <p class="text-lg font-nepali text-slate-500 mt-4">समृद्ध ललितपुरको लागि संयुक्त प्रयास</p>
+                </div>
+                
+                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-slate-100 -translate-x-1/2"></div>
+
+                <div class="flex flex-col md:flex-row items-center gap-12 md:gap-24 relative z-10">
+                    <!-- Chiribabu Side -->
+                    <div class="flex-1 text-center md:text-right group">
+                        <div class="w-32 h-32 md:w-40 md:h-40 mx-auto md:ml-auto md:mr-0 rounded-full overflow-hidden border-4 border-green-500 mb-6 shadow-2xl transform group-hover:scale-105 transition-transform">
+                            <img src="./images/chiri.webp" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-black font-display text-slate-900">Chiribabu Maharjan</h3>
+                        <p class="text-[10px] md:text-xs font-bold text-green-600 uppercase tracking-widest mb-4">Mayor, Lalitpur</p>
+                        <p class="text-slate-500 italic font-nepali leading-relaxed text-sm md:text-base">"मैले सुरु गरेको सम्पदा र पूर्वाधारको कामलाई केन्द्रबाट नीतिगत सहयोग गर्न जितेन्द्र जस्तो भाई चाहिन्छ।"</p>
+                    </div>
+
+                    <!-- Handshake Icon in Middle -->
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-white border-2 border-slate-100 rounded-full flex items-center justify-center text-slate-300 z-10 shadow-xl shrink-0">
+                        <i data-lucide="handshake" class="w-6 h-6 md:w-8 md:h-8 text-primary"></i>
+                    </div>
+
+                    <!-- Jitendra Side -->
+                    <div class="flex-1 text-center md:text-left group">
+                        <div class="w-32 h-32 md:w-40 md:h-40 mx-auto md:mr-auto md:ml-0 rounded-full overflow-hidden border-4 border-primary mb-6 shadow-2xl transform group-hover:scale-105 transition-transform">
+                            <img src="https://www.jitendrakumarshrestha.com/assets/img/profile.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-black font-display text-slate-900">Jitendra K. Shrestha</h3>
+                        <p class="text-[10px] md:text-xs font-bold text-primary uppercase tracking-widest mb-4">Candidate, Lalitpur-3</p>
+                        <p class="text-slate-500 italic font-nepali leading-relaxed text-sm md:text-base">"चिरीबाबु दाईको भिजन र गगन दाईको मिसन। ललितपुरको ग्राउन्ड रियालिटी बुझेको छु।"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Complete Archive Journey -->
+    <section id="journey" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16 md:mb-20 animate-fade-in-up">
+                <h2 class="text-4xl md:text-6xl font-black tracking-tighter font-display uppercase italic text-slate-900">The Archive</h2>
+                <div class="h-1 w-16 bg-primary mx-auto mt-4 rounded-full"></div>
+                <p class="text-lg font-nepali text-slate-500 mt-6">मेरो राजनीतिक यात्राका मुख्य कोशेढुङ्गाहरू</p>
+            </div>
+
+            <div class="bg-slate-50 rounded-[2rem] md:rounded-[2.5rem] shadow-xl overflow-hidden border border-slate-100">
+                <!-- Item 1 -->
+                <div class="journey-item p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
+                    <div class="text-3xl font-black text-slate-900 font-display w-40">2043</div>
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold font-nepali text-dark">नेवि संघ सदस्य</h4>
+                        <p class="text-slate-500 font-nepali text-sm">२०४३ सालमा नेवि संघ सदस्य प्राप्त</p>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="journey-item p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
+                    <div class="text-3xl font-black text-slate-900 font-display w-40">2050</div>
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold font-nepali text-dark">नेपाली काँग्रेस सक्रिय सदस्य</h4>
+                        <p class="text-slate-500 font-nepali text-sm">२०५० सालमा नेपाली काँग्रेस को क्रियाशिल सदस्य प्राप्त</p>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="journey-item p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
+                    <div class="text-3xl font-black text-slate-900 font-display w-40">2050</div>
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold font-nepali text-dark">वडा नं ३ इकाई सभापति</h4>
+                        <p class="text-slate-500 font-nepali text-sm">२०५० सालमा नेपाली काँग्रेस वडा नं ३ इकाई सभापति</p>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="journey-item p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
+                    <div class="text-3xl font-black text-slate-900 font-display w-40">2052</div>
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold font-nepali text-dark">कोषाध्यक्ष</h4>
+                        <p class="text-slate-500 font-nepali text-sm">२०५२ सालमा क्षेत्रिय कार्य समितिको कोषाध्यक्ष</p>
+                    </div>
+                </div>
+                <!-- Item 5 -->
+                <div class="journey-item p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
+                    <div class="text-3xl font-black text-slate-900 font-display w-40">2057</div>
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold font-nepali text-dark">महाअधिवेशन प्रतिनिधि</h4>
+                        <p class="text-slate-500 font-nepali text-sm">२०५७ सालमा नेपाली काँग्रेस को महाअधिवेशन प्रतिनिधि</p>
+                    </div>
+                </div>
+                <!-- Item 6 -->
+                <div class="journey-item p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
+                    <div class="text-3xl font-black text-slate-900 font-display w-40">2057</div>
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold font-nepali text-dark">क्षेत्रिय समिति सचिव</h4>
+                        <p class="text-slate-500 font-nepali text-sm">२०५७ साल देखी क्षेत्रिय समितिको सचिव</p>
+                    </div>
+                </div>
+                <!-- Item 7 -->
+                <div class="journey-item p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
+                    <div class="text-3xl font-black text-slate-900 font-display w-40">2058-59</div>
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold font-nepali text-dark">जिल्ला सदस्य</h4>
+                        <p class="text-slate-500 font-nepali text-sm">२०५८ - २०५९ सालबाट नेपाली काँग्रेसको जिल्ला सदस्य</p>
+                    </div>
+                </div>
+                <!-- Item 8 -->
+                <div class="journey-item p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
+                    <div class="text-3xl font-black text-slate-900 font-display w-40">2059</div>
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold font-nepali text-dark">केन्द्रिय कोषाध्यक्ष</h4>
+                        <p class="text-slate-500 font-nepali text-sm">बि.स २०५९ सालमा नेपाल संस्कृति संघ को केन्द्रिय कोषाध्यक्ष</p>
+                    </div>
+                </div>
+                <!-- Item 9 -->
+                <div class="journey-item p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
+                    <div class="text-3xl font-black text-slate-900 font-display w-40">2062/63</div>
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold font-nepali text-dark">आन्दोलन परिचालन सदस्य</h4>
+                        <p class="text-slate-500 font-nepali text-sm">बि.स २०६२/६३ साल आन्दोलन परिचालन समितिको सदस्य</p>
+                    </div>
+                </div>
+                <!-- Item 10 -->
+                <div class="journey-item p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
+                    <div class="text-3xl font-black text-slate-900 font-display w-40">2064</div>
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold font-nepali text-dark">जिल्ला कोषाध्यक्ष</h4>
+                        <p class="text-slate-500 font-nepali text-sm">२०६४ सालबाट नेपाली काँग्रेसको जिल्ला कोषाध्यक्ष</p>
+                    </div>
+                </div>
+                <!-- Item 11 -->
+                <div class="journey-item p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
+                    <div class="text-3xl font-black text-slate-900 font-display w-40">2057-Now</div>
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold font-nepali text-dark">महाअधिवेशन-महासमिति सदस्य</h4>
+                        <p class="text-slate-900 font-nepali text-sm">बि.स २०५७ देखि हाल सम्म निरन्तर सेवा</p>
+                    </div>
+                </div>
+                <!-- Item 12 -->
+                <div class="journey-item p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-12 bg-rose-50/50">
+                    <div class="text-3xl font-black text-slate-900 font-display w-40">2078</div>
+                    <div class="flex-1">
+                        <h4 class="text-xl font-bold font-nepali text-dark">ललितपुर जिल्ला सभापति</h4>
+                        <p class="text-slate-900 font-nepali text-sm">बि.स २०७८ देखि हाल सम्म सशक्त र एकीकृत नेतृत्व।</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 px-6 py-2 bg-white text-primary rounded-lg font-black text-[10px] uppercase tracking-widest shadow-xl group-hover:scale-105 transition-transform w-max">
+                        Present
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Campaign Tree & Support -->
+    <section id="campaign" class="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="text-primary font-bold tracking-[0.3em] text-[10px] uppercase">Interactive Campaign</span>
+                <h2 class="text-4xl md:text-6xl font-black font-display text-slate-900 mt-4 mb-4">
+                    बदल्छौँ <span id="changing-text" class="text-primary inline-block border-b-4 border-green-500 transition-all duration-300">देश</span>
+                </h2>
+                <p class="text-slate-500 font-nepali text-lg">समृद्धिको यात्रामा तपाईको साथ</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 md:gap-16 items-end max-w-6xl mx-auto">
+                <!-- Tree Visualization -->
+                <div class="relative h-[350px] md:h-[400px] bg-white rounded-[2rem] md:rounded-[3rem] border border-slate-100 flex items-end justify-center overflow-hidden w-full shadow-2xl">
+                    <!-- Leaf Container -->
+                    <div id="leaf-container" class="absolute bottom-[120px] w-full h-[250px] pointer-events-none">
+                        <!-- Initial Leaf -->
+                        <div class="leaf-node animate-float" style="left: 50%; bottom: 20px; transform: translateX(-50%);">जय नेपाल</div>
+                    </div>
+                    
+                    <!-- Tree Art -->
+                    <div class="flex flex-col items-center relative z-10 mb-8">
+                        <!-- Branches -->
+                        <div class="w-2 h-16 bg-[#5D4037] rounded relative mb-[-4px]">
+                            <div class="absolute bottom-8 -left-8 w-10 h-1 bg-[#5D4037] rotate-[-45deg]"></div>
+                            <div class="absolute bottom-12 -right-8 w-10 h-1 bg-[#5D4037] rotate-[45deg]"></div>
+                        </div>
+                        <!-- Trunk -->
+                        <div class="w-10 h-28 bg-[#5D4037] rounded-lg"></div>
+                        <!-- Base -->
+                        <div class="w-32 h-4 bg-[#3E2723] rounded-full blur-sm mt-[-2px] opacity-20"></div>
+                    </div>
+                </div>
+
+                <!-- Interaction Panel -->
+                <div class="flex flex-col justify-center space-y-8">
+                    <div class="flex items-center gap-6 bg-white p-6 md:p-8 rounded-[2rem] shadow-xl border border-slate-100">
+                        <div class="bg-rose-50 p-4 rounded-full text-primary">
+                            <i data-lucide="users" class="w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Total Supporters</span>
+                            <span id="support-counter" class="text-3xl md:text-4xl font-black text-slate-900 font-display">14,205</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button id="support-btn" class="btn-primary w-full justify-center text-lg py-4 md:py-5 shadow-rose-200">
+                            <i data-lucide="heart" class="w-6 h-6 fill-current"></i> मेरो समर्थन छ
+                        </button>
+                        <p id="thank-you-msg" class="text-green-600 font-bold font-nepali mt-4 text-center opacity-0 transition-opacity duration-300">
+                            धन्यवाद! तपाईको साथ नै हाम्रो शक्ति हो।
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 pt-4 border-t border-slate-200">
+                        <h4 class="font-bold text-slate-900 uppercase tracking-widest text-xs">Our Key Agendas</h4>
+                        <div class="flex flex-wrap gap-2 font-nepali">
+                            <span class="px-3 py-1.5 md:px-4 md:py-2 bg-white border border-slate-100 rounded-full text-sm text-slate-600 shadow-sm">शिक्षा</span>
+                            <span class="px-3 py-1.5 md:px-4 md:py-2 bg-white border border-slate-100 rounded-full text-sm text-slate-600 shadow-sm">स्वास्थ्य</span>
+                            <span class="px-3 py-1.5 md:px-4 md:py-2 bg-white border border-slate-100 rounded-full text-sm text-slate-600 shadow-sm">पर्यटन</span>
+                            <span class="px-3 py-1.5 md:px-4 md:py-2 bg-white border border-slate-100 rounded-full text-sm text-slate-600 shadow-sm">सम्पदा</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section id="vision" class="py-16 md:py-24 bg-white relative">
+        <div class="container mx-auto px-6 text-center mb-16 md:mb-20 relative z-10">
+            <h2 class="text-4xl md:text-6xl font-black tracking-tighter font-display uppercase italic">The Vision</h2>
+            <p class="text-xl font-nepali text-slate-400 mt-4 italic">"समृद्ध ललितपुर, हाम्रो सङ्कल्प"</p>
+        </div>
+
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 max-w-6xl">
+            <div class="space-y-6 group">
+                <div class="rounded-[2rem] md:rounded-[2.5rem] overflow-hidden aspect-[16/10] shadow-2xl bg-slate-100">
+                    <img src="./images/lalitpur.webp" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" alt="Cultural Infrastructure"/>
+                </div>
+                <div class="px-2 md:px-4">
+                    <span class="text-primary font-black uppercase tracking-[0.4em] text-[9px] block mb-2">Heritage & Progress</span>
+                    <h3 class="text-xl md:text-2xl font-black font-display uppercase leading-tight">Cultural Infrastructure</h3>
+                    <p class="text-slate-400 font-nepali leading-relaxed mt-2 text-sm md:text-base">ललितपुरको ऐतिहासिक कला र संस्कृतिको संरक्षण गर्दै पर्यटकीय पूर्वाधारको विकास।</p>
+                </div>
+            </div>
+            <div class="space-y-6 group">
+                <div class="rounded-[2rem] md:rounded-[2.5rem] overflow-hidden aspect-[16/10] shadow-2xl bg-slate-100">
+                    <img src="https://i0.wp.com/www.imagekhabar.com/wp-content/uploads/2026/01/rastiya-sava-saday.jpg?fit=1200%2C630&ssl=1" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" alt="Pure Governance"/>
+                </div>
+                <div class="px-2 md:px-4">
+                    <span class="text-primary font-black uppercase tracking-[0.4em] text-[9px] block mb-2">Integrity & System</span>
+                    <h3 class="text-xl md:text-2xl font-black font-display uppercase leading-tight">Pure Governance</h3>
+                    <p class="text-slate-400 font-nepali leading-relaxed mt-2 text-sm md:text-base">भ्रष्टाचारमुक्त प्रशासन र नागरिकमैत्री सेवा प्रवाहलाई प्रविधिमार्फत सहज बनाउने।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Mock Voting (Namuna Matdan) -->
+    <section id="vote" class="py-16 md:py-24 bg-blue-50 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-5xl font-black font-display text-slate-900">नमुना मतदान</h2>
+                <p class="text-slate-500 font-nepali mt-2">सही ठाउँमा छाप लगाउन अभ्यास गर्नुहोस्</p>
+            </div>
+
+            <div class="max-w-2xl mx-auto bg-white border-4 border-slate-900 p-2 md:p-8 shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-500">
+                <div class="border-b-4 border-slate-900 pb-4 mb-4 md:mb-6 text-center font-nepali font-bold text-lg md:text-xl">
+                    प्रतिनिधि सभा सदस्य निर्वाचन २०८४ - मतपत्र
+                </div>
+                
+                <!-- Voting Rows -->
+                <div class="space-y-3 md:space-y-4 font-nepali">
+                    <!-- Our Candidate -->
+                    <div class="flex items-stretch border-2 border-slate-900 min-h-[90px] md:min-h-[110px] hover:bg-green-50 transition-colors cursor-pointer group" onclick="castVote(this)">
+                        <div class="w-20 md:w-28 border-r-2 border-slate-900 flex items-center justify-center bg-slate-50">
+                            <i data-lucide="trees" class="w-8 h-8 md:w-12 md:h-12 text-green-600 stroke-[1.5]"></i>
+                        </div>
+                        <div class="flex-1 px-4 md:px-6 py-2 flex flex-col justify-center border-r-2 border-slate-900">
+                            <h3 class="font-bold text-lg md:text-2xl">जितेन्द्र कुमार श्रेष्ठ</h3>
+                            <span class="text-[10px] md:text-xs bg-primary text-white px-2 py-1 rounded w-max mt-1 font-bold">नेपाली कांग्रेस</span>
+                        </div>
+                        <div class="w-20 md:w-28 flex items-center justify-center relative bg-white stamp-area overflow-hidden">
+                            <span class="text-[9px] md:text-[10px] text-slate-400 group-hover:text-green-600 transition-colors text-center px-1">यहाँ छाप लगाउनुहोस्</span>
+                        </div>
+                    </div>
+
+                    <!-- Dummy Candidate 1 -->
+                    <div class="flex items-stretch border-2 border-slate-900 min-h-[70px] md:min-h-[90px] opacity-50 grayscale">
+                        <div class="w-20 md:w-28 border-r-2 border-slate-900 flex items-center justify-center bg-slate-50">
+                            <i data-lucide="sun" class="w-6 h-6 md:w-8 md:h-8 text-slate-400"></i>
+                        </div>
+                        <div class="flex-1 px-4 md:px-6 py-2 flex items-center border-r-2 border-slate-900">
+                            <span class="text-slate-500 font-medium text-sm md:text-base">अन्य उम्मेदवार</span>
+                        </div>
+                        <div class="w-20 md:w-28 bg-slate-50"></div>
+                    </div>
+
+                    <!-- Dummy Candidate 2 -->
+                    <div class="flex items-stretch border-2 border-slate-900 min-h-[70px] md:min-h-[90px] opacity-50 grayscale">
+                        <div class="w-20 md:w-28 border-r-2 border-slate-900 flex items-center justify-center bg-slate-50">
+                            <i data-lucide="umbrella" class="w-6 h-6 md:w-8 md:h-8 text-slate-400"></i>
+                        </div>
+                        <div class="flex-1 px-4 md:px-6 py-2 flex items-center border-r-2 border-slate-900">
+                            <span class="text-slate-500 font-medium text-sm md:text-base">अन्य उम्मेदवार</span>
+                        </div>
+                        <div class="w-20 md:w-28 bg-slate-50"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESTORED: Contact Form Section (Original) -->
+    <section id="contact" class="py-16 md:py-24 bg-slate-50">
+        <div class="container mx-auto px-6">
+             <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-4xl md:text-6xl font-black tracking-tighter font-display uppercase italic text-slate-900">Get in Touch</h2>
+                <div class="h-1 w-16 bg-primary mx-auto mt-4 rounded-full"></div>
+                <p class="text-lg font-nepali text-slate-500 mt-6">जनताको गुनासो र सुझावको लागि सधैं खुल्ला</p>
+             </div>
+
+             <div class="max-w-4xl mx-auto bg-white rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-100">
+                <form class="space-y-6" action="mailto:jitendramaleku@gmail.com" method="post" enctype="text/plain">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[15px] font-bold uppercase tracking-widest text-slate-500 mb-2 font-nepali">तपाईंको नाम</label>
+                            <input type="text" name="name" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors font-nepali" placeholder="तपाईंको नाम लेख्नुहोस्" required>
+                        </div>
+                        <div>
+                            <label class="block text-[15px] font-bold uppercase tracking-widest text-slate-500 mb-2 font-nepali">फोन नम्बर</label>
+                            <input type="tel" name="phone" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors font-nepali" placeholder="९८XXXXXXXX">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[15px] font-bold uppercase tracking-widest text-slate-500 mb-2 font-nepali">इमेल ठेगाना</label>
+                        <input type="email" name="email" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors font-nepali" placeholder="example@email.com" required>
+                    </div>
+                    <div>
+                        <label class="block text-[15px] font-bold uppercase tracking-widest text-slate-500 mb-2 font-nepali">सन्देश / सुझाव</label>
+                        <textarea rows="4" name="message" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors font-nepali" placeholder="तपाईंको सन्देश यहाँ लेख्नुहोस्..." required></textarea>
+                    </div>
+                    <div class="text-center pt-4">
+                        <button type="submit" class="btn-primary w-full md:w-auto justify-center bg-rose-600 hover:bg-rose-900 font-nepali">
+                            सन्देश पठाउनुहोस् <i data-lucide="send" class="w-4 h-4 ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+             </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-white py-16 md:py-20 px-6 border-t border-white/5">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-2 justify-between items-start gap-12 border-b border-white/5 pb-16 mb-12">
+                <div>
+                    <h3 class="text-3xl font-black font-display tracking-tighter uppercase mb-4">J.K. Shrestha</h3>
+                    <p class="text-slate-500 font-nepali text-lg max-w-sm italic leading-relaxed">"नेपाली काँग्रेस ललितपुर जिल्ला सभापति। <br> Dynamic Political Leader from Lalitpur Nepal."</p>
+                </div>
+                <div class="flex flex-wrap gap-8 md:justify-end">
+                    <a href="https://www.facebook.com/jitendrashresthalalitpur" target="_blank" class="group text-white hover:text-rose-500 transition-colors">
+                        <i data-lucide="facebook" class="w-6 h-6"></i>
+                    </a>
+                    <a href="https://www.instagram.com/jitendra_kumar_shrestha/" target="_blank" class="group text-white hover:text-rose-500 transition-colors">
+                        <i data-lucide="instagram" class="w-6 h-6"></i>
+                    </a>
+                    <a href="https://x.com/JitendraMaleku" target="_blank" class="group text-white hover:text-rose-500 transition-colors">
+                        <i data-lucide="twitter" class="w-6 h-6"></i>
+                    </a>
+                    <a href="tel:9851005459" class="group text-white hover:text-rose-500 transition-colors">
+                        <i data-lucide="phone" class="w-6 h-6"></i>
+                    </a>
+                    <a href="mailto:jitendramaleku@gmail.com" class="group text-white hover:text-rose-500 transition-colors">
+                        <i data-lucide="mail" class="w-6 h-6"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center text-[9px] font-black uppercase tracking-[0.5em] text-slate-700 gap-6 text-center">
+                <span>&copy; 2026 Jitendra Kumar Shrestha • Lalitpur Nepal</span>
+                <span class="flex items-center gap-2">Designed by Bharat Rajbanshi</a> <i data-lucide="heart" class="w-3 h-3 fill-primary text-primary"></i></span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(6)');
+            el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                }
+            });
+        }, { threshold: 0.05 });
+
+        document.querySelectorAll('section > div').forEach(el => {
+            observer.observe(el);
+        });
+
+      
+        const changingText = document.getElementById('changing-text');
+        if(changingText) {
+            const locations = ["देश", "ललितपुर", "समाज"];
+            let locIndex = 0;
+            setInterval(() => {
+                locIndex = (locIndex + 1) % locations.length;
+                changingText.style.opacity = '0';
+                setTimeout(() => {
+                    changingText.innerText = locations[locIndex];
+                    changingText.style.opacity = '1';
+                }, 300);
+            }, 3000);
+        }
+
+        // 2. TREE & SUPPORT INTERACTION
+        const supportBtn = document.getElementById('support-btn');
+        const leafContainer = document.getElementById('leaf-container');
+        const counterEl = document.getElementById('support-counter');
+        const thankMsg = document.getElementById('thank-you-msg');
+        
+        let count = 14205;
+        const keywords = [
+            "शिक्षा", "स्वास्थ्य", "रोजगार", "सम्पदा", "सुशासन", 
+            "प्रविधि", "पर्यटन", "सुरक्षा", "खानेपानी", "यातायात", 
+            "युवा", "महिला", "जेष्ठ नागरिक", "कृषी", "वातावरण"
+        ];
+
+        if(supportBtn) {
+            supportBtn.addEventListener('click', () => {
+                // Increment
+                count++;
+                counterEl.innerText = count.toLocaleString();
+
+                // Create Leaf
+                const keyword = keywords[Math.floor(Math.random() * keywords.length)];
+                const leaf = document.createElement('div');
+                leaf.classList.add('leaf-node', 'animate-grow');
+                leaf.innerText = keyword;
+
+                // Random Position in the "Tree Crown" area
+                const randomX = Math.floor(Math.random() * 80) + 10; 
+                const randomY = Math.floor(Math.random() * 150) + 20; 
+                
+                leaf.style.left = `${randomX}%`;
+                leaf.style.bottom = `${randomY}px`;
+                leaf.style.animationDelay = `${Math.random() * 0.5}s`;
+
+                leafContainer.appendChild(leaf);
+
+                // Button Feedback
+                supportBtn.classList.add('scale-95');
+                setTimeout(() => supportBtn.classList.remove('scale-95'), 100);
+
+                // Thank You Message
+                thankMsg.style.opacity = '1';
+                clearTimeout(window.msgTimeout);
+                window.msgTimeout = setTimeout(() => {
+                    thankMsg.style.opacity = '0';
+                }, 2000);
+            });
+        }
+
+        // 3. VOTING STAMP LOGIC
+        window.castVote = function(el) {
+            const area = el.querySelector('.stamp-area');
+            area.innerHTML = ''; 
+            
+            // Create Swastik
+            const swastik = document.createElement('div');
+            swastik.className = 'swastik animate-grow';
+            
+            // Create Arms
+            ['arm-1', 'arm-2', 'arm-3', 'arm-4'].forEach(cls => {
+                const div = document.createElement('div');
+                div.className = cls;
+                swastik.appendChild(div);
+            });
+
+            area.appendChild(swastik);
+            
+            // Rotate randomly for realism
+            const rotation = Math.random() * 30 - 15; // -15 to +15 deg
+            swastik.style.transform = `rotate(${rotation}deg)`;
+            
+            // Visual feedback on row
+            el.style.backgroundColor = '#ecfdf5'; // green-50
+            el.style.borderColor = '#16a34a'; // green-600
+        }
+
+        const canvas = document.getElementById('posterCanvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            const fileInput = document.getElementById('fileInput');
+            const scaleSlider = document.getElementById('scaleSlider');
+            
+            let userImage = null;
+            let candidateImage = new Image();
+            let logoImage = new Image();
+            
+            const candidateUrl = 'https://www.jitendrakumarshrestha.com/assets/img/profile.jpg';
+            const logoUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Nepali_Congress_Logo.png/600px-Nepali_Congress_Logo.png';
+
+        }
+    </script>
+</body>
+</html>
