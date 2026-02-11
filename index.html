@@ -468,24 +468,18 @@
 
             <div class="grid lg:grid-cols-2 gap-12 md:gap-16 items-end max-w-6xl mx-auto">
                 <!-- Tree Visualization -->
-                <div class="relative h-[350px] md:h-[400px] bg-white rounded-[2rem] md:rounded-[3rem] border border-slate-100 flex items-end justify-center overflow-hidden w-full shadow-2xl">
+                <div class="relative h-[350px] md:h-[400px] bg-white rounded-[2rem] md:rounded-[3rem] border border-slate-100 flex items-end justify-center overflow-hidden w-full shadow-2xl group">
                     <!-- Leaf Container -->
-                    <div id="leaf-container" class="absolute bottom-[120px] w-full h-[250px] pointer-events-none">
+                    <div id="leaf-container" class="absolute bottom-[100px] w-full h-[250px] pointer-events-none z-20">
                         <!-- Initial Leaf -->
-                        <div class="leaf-node animate-float" style="left: 50%; bottom: 20px; transform: translateX(-50%);">जय नेपाल</div>
+                        <div class="leaf-node animate-float" style="left: 50%; bottom: 60px; transform: translateX(-50%);">जय नेपाल</div>
                     </div>
                     
-                    <!-- Tree Art -->
-                    <div class="flex flex-col items-center relative z-10 mb-8">
-                        <!-- Branches -->
-                        <div class="w-2 h-16 bg-[#5D4037] rounded relative mb-[-4px]">
-                            <div class="absolute bottom-8 -left-8 w-10 h-1 bg-[#5D4037] rotate-[-45deg]"></div>
-                            <div class="absolute bottom-12 -right-8 w-10 h-1 bg-[#5D4037] rotate-[45deg]"></div>
-                        </div>
-                        <!-- Trunk -->
-                        <div class="w-10 h-28 bg-[#5D4037] rounded-lg"></div>
-                        <!-- Base -->
-                        <div class="w-32 h-4 bg-[#3E2723] rounded-full blur-sm mt-[-2px] opacity-20"></div>
+                    <!-- Tree Art (Real Image) -->
+                    <div class="flex flex-col items-center relative z-10 w-full h-full justify-end pb-8">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Nepalese_Election_Symbol_Tree_Green.svg/1280px-Nepalese_Election_Symbol_Tree_Green.svg.png" 
+                             alt="Nepali Congress Tree" 
+                             class="w-auto h-[220px] md:h-[280px] object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105"/>
                     </div>
                 </div>
 
@@ -502,7 +496,7 @@
                     </div>
 
                     <div>
-                        <button id="support-btn" class="btn-primary w-full justify-center text-lg py-4 md:py-5 shadow-rose-200">
+                        <button id="support-btn" class="btn-primary w-full justify-center text-lg py-4 md:py-5 shadow-rose-200 hover:shadow-rose-300 transform active:scale-95 transition-all">
                             <i data-lucide="heart" class="w-6 h-6 fill-current"></i> मेरो समर्थन छ
                         </button>
                         <p id="thank-you-msg" class="text-green-600 font-bold font-nepali mt-4 text-center opacity-0 transition-opacity duration-300">
@@ -510,17 +504,6 @@
                         </p>
                     </div>
 
-                    <div class="space-y-4 pt-4 border-t border-slate-200">
-                        <h4 class="font-bold text-slate-900 uppercase tracking-widest text-xs">Our Key Agendas</h4>
-                        <div class="flex flex-wrap gap-2 font-nepali">
-                            <span class="px-3 py-1.5 md:px-4 md:py-2 bg-white border border-slate-100 rounded-full text-sm text-slate-600 shadow-sm">शिक्षा</span>
-                            <span class="px-3 py-1.5 md:px-4 md:py-2 bg-white border border-slate-100 rounded-full text-sm text-slate-600 shadow-sm">स्वास्थ्य</span>
-                            <span class="px-3 py-1.5 md:px-4 md:py-2 bg-white border border-slate-100 rounded-full text-sm text-slate-600 shadow-sm">पर्यटन</span>
-                            <span class="px-3 py-1.5 md:px-4 md:py-2 bg-white border border-slate-100 rounded-full text-sm text-slate-600 shadow-sm">सम्पदा</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
