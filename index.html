@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="np" class="scroll-smooth">
+<html lang="np" class="scroll-smooth" style="scroll-padding-top: 80px;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -130,6 +130,47 @@
         }
         .animate-grow { animation: grow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
 
+        .mango-node {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, #FDE047, #F59E0B, #EA580C);
+            width: 45px;
+            height: 55px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: -2px 4px 8px rgba(0,0,0,0.3), inset -4px -4px 10px rgba(0,0,0,0.1);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-origin: top center;
+        }
+        .mango-node::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            width: 4px;
+            height: 8px;
+            background: #4A3000;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        .mango-text {
+            font-size: 0.65rem;
+            font-weight: 900;
+            color: #78350F;
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.6);
+            z-index: 2;
+            font-family: 'Mukta', sans-serif;
+            text-align: center;
+        }
+        @keyframes drop-bounce {
+            0% { transform: scale(0) translateY(-50px); opacity: 0; }
+            60% { transform: scale(1.1) translateY(10px); opacity: 1; }
+            80% { transform: scale(0.95) translateY(-5px); }
+            100% { transform: scale(1) translateY(0); }
+        }
+        .animate-mango { animation: drop-bounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
         .leaf-node {
             position: absolute;
             background: var(--success);
@@ -200,7 +241,7 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="text-center lg:text-left animate-fade-in-up">
                     <div class="inline-flex items-center gap-2 bg-white shadow-lg shadow-slate-200/40 border border-slate-100 text-slate-500 font-bold px-4 py-1.5 md:px-5 md:py-2 rounded-full text-[9px] md:text-[10px] mb-6 md:mb-8 uppercase tracking-[0.2em]">
-                        <img src="./images/logo.webp" alt="NC" class="w-5 h-5 md:w-5 md:h-5"/>
+                        <img src="./images/logo.webp" alt="NC" class="w-5 h-5 md:w-5 md:h-5 object-contain"/>
                         District Chairman • Lalitpur
                     </div>
                     <h1 class="hero-title font-black text-slate-900 font-display tracking-tighter uppercase mb-6 md:mb-8">
@@ -316,7 +357,7 @@
                     <!-- Chiribabu Side -->
                     <div class="flex-1 text-center md:text-right group">
                         <div class="w-32 h-32 md:w-40 md:h-40 mx-auto md:ml-auto md:mr-0 rounded-full overflow-hidden border-4 border-green-500 mb-6 shadow-2xl transform group-hover:scale-105 transition-transform">
-                            <img src="./images/chiri.webp" class="w-full h-full object-cover">
+                            <img src="./images/chiri.webp" class="w-full h-full object-cover" alt="Chiribabu Maharjan Placeholder">
                         </div>
                         <h3 class="text-xl md:text-2xl font-black font-display text-slate-900">Chiribabu Maharjan</h3>
                         <p class="text-[10px] md:text-xs font-bold text-green-600 uppercase tracking-widest mb-4">Mayor, Lalitpur</p>
@@ -331,7 +372,7 @@
                     <!-- Jitendra Side -->
                     <div class="flex-1 text-center md:text-left group">
                         <div class="w-32 h-32 md:w-40 md:h-40 mx-auto md:mr-auto md:ml-0 rounded-full overflow-hidden border-4 border-primary mb-6 shadow-2xl transform group-hover:scale-105 transition-transform">
-                            <img src="https://www.jitendrakumarshrestha.com/assets/img/profile.jpg" class="w-full h-full object-cover">
+                            <img src="https://www.jitendrakumarshrestha.com/assets/img/profile.jpg" class="w-full h-full object-cover" alt="Jitendra K. Shrestha">
                         </div>
                         <h3 class="text-xl md:text-2xl font-black font-display text-slate-900">Jitendra K. Shrestha</h3>
                         <p class="text-[10px] md:text-xs font-bold text-primary uppercase tracking-widest mb-4">Candidate, Lalitpur-3</p>
@@ -470,16 +511,29 @@
                 <!-- Tree Visualization -->
                 <div class="relative h-[350px] md:h-[400px] bg-white rounded-[2rem] md:rounded-[3rem] border border-slate-100 flex items-end justify-center overflow-hidden w-full shadow-2xl group">
                     <!-- Leaf Container -->
-                    <div id="leaf-container" class="absolute bottom-[100px] w-full h-[250px] pointer-events-none z-20">
-                        <!-- Initial Leaf -->
-                        <div class="leaf-node animate-float" style="left: 50%; bottom: 60px; transform: translateX(-50%);">जय नेपाल</div>
+                    <div id="leaf-container" class="absolute bottom-[20px] w-full h-[300px] pointer-events-none z-20">
+                        <!-- Initial Mango -->
+                        <div class="mango-node animate-float" style="left: calc(50% - 22px); bottom: 150px;">
+                            <span class="mango-text">जय नेपाल</span>
+                        </div>
                     </div>
                     
-                    <!-- Tree Art (Real Image) -->
+                    <!-- Tree Art (Custom SVG) -->
                     <div class="flex flex-col items-center relative z-10 w-full h-full justify-end pb-8">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Nepalese_Election_Symbol_Tree_Green.svg/1280px-Nepalese_Election_Symbol_Tree_Green.svg.png" 
-                             alt="Nepali Congress Tree" 
-                             class="w-auto h-[220px] md:h-[280px] object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105"/>
+                        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="w-auto h-[250px] md:h-[320px] drop-shadow-2xl transition-transform duration-700 group-hover:scale-105">
+                            <!-- Trunk -->
+                            <path d="M180,400 Q190,250 150,150 L200,200 L250,150 Q210,250 220,400 Z" fill="#5D4037"/>
+                            <path d="M200,200 L170,120 L230,120 Z" fill="#4E342E"/>
+                            <!-- Canopy Base -->
+                            <circle cx="200" cy="150" r="110" fill="#1B5E20"/>
+                            <!-- Canopy Layers -->
+                            <circle cx="130" cy="170" r="70" fill="#2E7D32"/>
+                            <circle cx="270" cy="170" r="70" fill="#2E7D32"/>
+                            <circle cx="160" cy="90" r="70" fill="#388E3C"/>
+                            <circle cx="240" cy="90" r="70" fill="#388E3C"/>
+                            <circle cx="200" cy="100" r="80" fill="#43A047"/>
+                            <circle cx="200" cy="60" r="50" fill="#4CAF50"/>
+                        </svg>
                     </div>
                 </div>
 
@@ -503,7 +557,8 @@
                             धन्यवाद! तपाईको साथ नै हाम्रो शक्ति हो।
                         </p>
                     </div>
-
+                </div>
+            </div>
         </div>
     </section>
 
@@ -660,7 +715,7 @@
             </div>
             <div class="flex flex-col md:flex-row justify-between items-center text-[9px] font-black uppercase tracking-[0.5em] text-slate-700 gap-6 text-center">
                 <span>&copy; 2026 Jitendra Kumar Shrestha • Lalitpur Nepal</span>
-                <span class="flex items-center gap-2">Designed by Bharat Rajbanshi</a> <i data-lucide="heart" class="w-3 h-3 fill-primary text-primary"></i></span>
+                <span class="flex items-center gap-2">Designed by Bharat Rajbanshi <i data-lucide="heart" class="w-3 h-3 fill-primary text-primary"></i></span>
             </div>
         </div>
     </footer>
@@ -674,7 +729,7 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        document.querySelectorAll('a, button').forEach(el => {
+        document.querySelectorAll('a, button, .cursor-pointer').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(6)');
             el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
         });
@@ -725,21 +780,25 @@
                 count++;
                 counterEl.innerText = count.toLocaleString();
 
-                // Create Leaf
+                // Create Mango
                 const keyword = keywords[Math.floor(Math.random() * keywords.length)];
-                const leaf = document.createElement('div');
-                leaf.classList.add('leaf-node', 'animate-grow');
-                leaf.innerText = keyword;
-
-                // Random Position in the "Tree Crown" area
-                const randomX = Math.floor(Math.random() * 80) + 10; 
-                const randomY = Math.floor(Math.random() * 150) + 20; 
+                const mango = document.createElement('div');
+                mango.classList.add('mango-node', 'animate-mango');
                 
-                leaf.style.left = `${randomX}%`;
-                leaf.style.bottom = `${randomY}px`;
-                leaf.style.animationDelay = `${Math.random() * 0.5}s`;
+                const textSpan = document.createElement('span');
+                textSpan.classList.add('mango-text');
+                textSpan.innerText = keyword;
+                mango.appendChild(textSpan);
 
-                leafContainer.appendChild(leaf);
+                // Random Position over the SVG Canopy
+                const randomX = Math.floor(Math.random() * 40) + 30; // 30% to 70% width
+                const randomY = Math.floor(Math.random() * 120) + 140; // 140px to 260px from bottom
+                
+                mango.style.left = `${randomX}%`;
+                mango.style.bottom = `${randomY}px`;
+                mango.style.animationDelay = `0s`;
+
+                leafContainer.appendChild(mango);
 
                 // Button Feedback
                 supportBtn.classList.add('scale-95');
@@ -779,21 +838,6 @@
             // Visual feedback on row
             el.style.backgroundColor = '#ecfdf5'; // green-50
             el.style.borderColor = '#16a34a'; // green-600
-        }
-
-        const canvas = document.getElementById('posterCanvas');
-        if (canvas) {
-            const ctx = canvas.getContext('2d');
-            const fileInput = document.getElementById('fileInput');
-            const scaleSlider = document.getElementById('scaleSlider');
-            
-            let userImage = null;
-            let candidateImage = new Image();
-            let logoImage = new Image();
-            
-            const candidateUrl = 'https://www.jitendrakumarshrestha.com/assets/img/profile.jpg';
-            const logoUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Nepali_Congress_Logo.png/600px-Nepali_Congress_Logo.png';
-
         }
     </script>
 </body>
