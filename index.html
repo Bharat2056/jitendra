@@ -75,11 +75,15 @@
             align-items: center;
             gap: 0.6rem;
             font-size: 0.95rem;
+            cursor: pointer;
         }
         .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 35px -10px rgba(225, 29, 72, 0.4);
             background: #be123c;
+        }
+        .btn-primary:active {
+            transform: scale(0.95);
         }
 
         .btn-poster {
@@ -128,7 +132,7 @@
             0% { transform: scale(0); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
-        .animate-grow { animation: grow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        .animate-grow { animation: grow 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
 
         .mango-node {
             position: absolute;
@@ -170,22 +174,6 @@
             100% { transform: scale(1) translateY(0); }
         }
         .animate-mango { animation: drop-bounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-
-        .leaf-node {
-            position: absolute;
-            background: var(--success);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            white-space: nowrap;
-            z-index: 10;
-        }
-        @media (min-width: 768px) {
-            .leaf-node { font-size: 0.8rem; padding: 4px 12px; }
-        }
 
         .tree-trunk {
             background: #5D4037;
@@ -247,6 +235,9 @@
                     <h1 class="hero-title font-black text-slate-900 font-display tracking-tighter uppercase mb-6 md:mb-8">
                         Jitendra <br> <span class="text-primary italic">Kumar</span> <br> Shrestha
                     </h1>
+                    <p class="text-xl md:text-2xl text-gray-600 mt-4 mb-4">
+                        तपाईंको <span id="role-text" class="font-bold text-cGreen text-2xl md:text-3xl">भाई</span>, जितेन्द्र कुमार श्रेष्ठ
+            </p>
                     <p class="text-lg md:text-2xl font-nepali text-slate-500 mb-8 md:mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium italic">
                         नेपाली काँग्रेस ललितपुर जिल्ला सभापति। <br> समाज रूपान्तरणको ३ दशक लामो अविचलित यात्रा।
                     </p>
@@ -724,16 +715,69 @@
         lucide.createIcons();
 
         const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
+        
+        // Only attach cursor events if element exists
+        if(cursor) {
+            document.addEventListener('mousemove', (e) => {
+                // Check if hidden (mobile)
+                if(window.getComputedStyle(cursor).display === 'none') return;
+                
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
 
-        document.querySelectorAll('a, button, .cursor-pointer').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(6)');
-            el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
-        });
+            document.querySelectorAll('a, button, .cursor-pointer').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                   if(window.getComputedStyle(cursor).display !== 'none') cursor.style.transform = 'scale(6)';
+                });
+                el.addEventListener('mouseleave', () => {
+                   if(window.getComputedStyle(cursor).display !== 'none') cursor.style.transform = 'scale(1)';
+                });
+            });
+        }
 
+        // 1. DYNAMIC TEXT LOOP
+        const changingText = document.getElementById('changing-text');
+        if(changingText) {
+            const locations = ["देश", "ललितपुर", "समाज"];
+            let locIndex = 0;
+
+            setInterval(() => {
+                locIndex = (locIndex + 1) % locations.length;
+                changingText.style.opacity = '0';
+                setTimeout(() => {
+                    changingText.innerText = locations[locIndex];
+                    changingText.style.opacity = '1';
+                    
+                    // Logic for Color Changing
+                    if(locations[locIndex] === "ललितपुर") {
+                        changingText.classList.remove('text-primary');
+                        changingText.classList.add('text-green-600');
+                    } else {
+                        changingText.classList.remove('text-green-600');
+                        changingText.classList.add('text-primary');
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // 2. DYNAMIC ROLE LOOP
+        const roleText = document.getElementById('role-text');
+        if (roleText) {
+            const roles = ["भाई", "दाइ", "छोरा", "अंकल", "साथी", "अभिभावक"];
+            let roleIndex = 0;
+
+            setInterval(() => {
+                roleIndex = (roleIndex + 1) % roles.length;
+                roleText.style.opacity = '0';
+                setTimeout(() => {
+                    roleText.innerText = roles[roleIndex];
+                    roleText.style.opacity = '1';
+                }, 500);
+            }, 2500);
+        }
+
+        // Animation Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -746,22 +790,7 @@
             observer.observe(el);
         });
 
-      
-        const changingText = document.getElementById('changing-text');
-        if(changingText) {
-            const locations = ["देश", "ललितपुर", "समाज"];
-            let locIndex = 0;
-            setInterval(() => {
-                locIndex = (locIndex + 1) % locations.length;
-                changingText.style.opacity = '0';
-                setTimeout(() => {
-                    changingText.innerText = locations[locIndex];
-                    changingText.style.opacity = '1';
-                }, 300);
-            }, 3000);
-        }
-
-        // 2. TREE & SUPPORT INTERACTION
+        // 3. TREE & SUPPORT INTERACTION
         const supportBtn = document.getElementById('support-btn');
         const leafContainer = document.getElementById('leaf-container');
         const counterEl = document.getElementById('support-counter');
@@ -813,7 +842,7 @@
             });
         }
 
-        // 3. VOTING STAMP LOGIC
+        // 4. VOTING STAMP LOGIC
         window.castVote = function(el) {
             const area = el.querySelector('.stamp-area');
             area.innerHTML = ''; 
