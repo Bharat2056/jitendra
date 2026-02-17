@@ -643,7 +643,7 @@
                     <!-- Item 5: Tourism & Heritage (Others) -->
                     <div class="snap-center shrink-0 w-[280px] md:w-[320px] group/card bg-white p-4 rounded-[2rem] shadow-xl hover:-translate-y-2 transition-transform duration-300">
                         <div class="aspect-square rounded-[1.5rem] overflow-hidden mb-6 relative">
-                             <img src="/images/tourism.jpeg" class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500" alt="Tourism">
+                             <img src="https://images.unsplash.com/photo-1583569733075-801267b2cb70?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500" alt="Tourism">
                         </div>
                         <h3 class="text-xl font-black font-display text-slate-900 text-center mb-2">Tourism & Heritage</h3>
                         <p class="text-center font-nepali text-slate-500 text-sm">कला, संस्कृति र सम्पदाको संरक्षण।</p>
@@ -723,7 +723,7 @@
              </div>
 
              <div class="max-w-4xl mx-auto bg-white rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-100">
-                <form class="space-y-6" action="mailto:jitendramaleku@gmail.com" method="post" enctype="text/plain">
+                <form id="contactForm" class="space-y-6" onsubmit="submitForm(event)">
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-[15px] font-bold uppercase tracking-widest text-slate-500 mb-2 font-nepali">तपाईंको नाम</label>
@@ -743,9 +743,10 @@
                         <textarea rows="4" name="message" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors font-nepali" placeholder="तपाईंको सन्देश यहाँ लेख्नुहोस्..." required></textarea>
                     </div>
                     <div class="text-center pt-4">
-                        <button type="submit" class="btn-primary w-full md:w-auto justify-center bg-rose-600 hover:bg-rose-900 font-nepali">
+                        <button type="submit" id="submitBtn" class="btn-primary w-full md:w-auto justify-center bg-rose-600 hover:bg-rose-900 font-nepali">
                             सन्देश पठाउनुहोस् <i data-lucide="send" class="w-4 h-4 ml-2"></i>
                         </button>
+                        <p id="formStatus" class="mt-4 text-sm font-bold font-nepali hidden"></p>
                     </div>
                 </form>
              </div>
@@ -785,8 +786,26 @@
         </div>
     </footer>
 
+    <!-- SUCCESS MODAL -->
+    <div id="successModal" class="fixed inset-0 z-[100] flex items-center justify-center px-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="bg-white rounded-2xl p-8 md:p-10 shadow-2xl relative z-10 max-w-md w-full text-center transform scale-95 transition-transform duration-300" id="modalContent">
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i data-lucide="check" class="w-10 h-10 text-green-600"></i>
+            </div>
+            <h3 class="text-2xl font-black font-display text-slate-900 mb-2">धन्यवाद!</h3>
+            <p class="text-slate-500 font-nepali text-lg mb-8">तपाईंको सन्देश हामीलाई प्राप्त भयो। हामी छिट्टै सम्पर्क गर्नेछौं।</p>
+            <button onclick="closeModal()" class="btn-primary w-full justify-center">
+                बन्द गर्नुहोस्
+            </button>
+        </div>
+    </div>
+
     <script>
         lucide.createIcons();
+
+        // PLACE YOUR GOOGLE APPS SCRIPT URL HERE
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxF5f_16n1jxbFHYyL67JGHJFrWyfhyUS9dC_-7JDdvMMMqFSGEWgv9ds4GqHZYITlb/exec";
 
         const cursor = document.getElementById('cursor');
         
@@ -864,24 +883,52 @@
             observer.observe(el);
         });
 
-        // 3. TREE & SUPPORT INTERACTION
+        // 3. TREE & SUPPORT INTERACTION (With Google Sheet Integration)
         const supportBtn = document.getElementById('support-btn');
         const leafContainer = document.getElementById('leaf-container');
         const counterEl = document.getElementById('support-counter');
         const thankMsg = document.getElementById('thank-you-msg');
         
-        let count = 14205;
+        let count = 14205; // Fallback initial count
         const keywords = [
             "शिक्षा", "स्वास्थ्य", "रोजगार", "सम्पदा", "सुशासन", 
             "प्रविधि", "पर्यटन", "सुरक्षा", "खानेपानी", "यातायात", 
             "युवा", "महिला", "जेष्ठ नागरिक", "कृषी", "वातावरण"
         ];
 
+        // FETCH INITIAL COUNT
+        if(SCRIPT_URL !== "PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
+            fetch(SCRIPT_URL)
+            .then(response => response.json())
+            .then(data => {
+                if(data.count) {
+                    count = data.count;
+                    counterEl.innerText = count.toLocaleString();
+                }
+            })
+            .catch(e => console.log("Backend not connected yet or CORS issue"));
+        }
+
         if(supportBtn) {
             supportBtn.addEventListener('click', () => {
-                // Increment
+                // Optimistic UI update
                 count++;
                 counterEl.innerText = count.toLocaleString();
+
+                // Send to Google Sheet
+                if(SCRIPT_URL !== "PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
+                    const formData = new FormData();
+                    formData.append('action', 'support');
+                    fetch(SCRIPT_URL, { method: 'POST', body: formData })
+                    .then(response => response.json())
+                    .then(data => {
+                        if(data.count) {
+                            count = data.count; // Sync with real DB count
+                            counterEl.innerText = count.toLocaleString();
+                        }
+                    })
+                    .catch(e => console.error("Error logging support", e));
+                }
 
                 // Create Mango
                 const keyword = keywords[Math.floor(Math.random() * keywords.length)];
@@ -916,7 +963,60 @@
             });
         }
 
-        // 4. VOTING STAMP LOGIC
+        // 4. CONTACT FORM SUBMISSION WITH MODAL
+        function submitForm(event) {
+            event.preventDefault();
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if(SCRIPT_URL === "PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
+                alert("Please configure the Google Apps Script URL in the code.");
+                return;
+            }
+
+            // UI Loading State
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'पठाउदैछ...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+            formData.append('action', 'contact');
+
+            fetch(SCRIPT_URL, { method: 'POST', body: formData })
+            .then(response => {
+                // Show Success Modal
+                openModal();
+                form.reset();
+                
+                // Reset Button
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                submitBtn.innerHTML = 'Error! Try Again';
+                submitBtn.disabled = false;
+            });
+        }
+
+        // Modal Logic
+        function openModal() {
+            const modal = document.getElementById('successModal');
+            const content = document.getElementById('modalContent');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('successModal');
+            const content = document.getElementById('modalContent');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+        }
+
+        // 5. VOTING STAMP LOGIC
         window.castVote = function(el) {
             const area = el.querySelector('.stamp-area');
             area.innerHTML = ''; 
@@ -943,7 +1043,7 @@
             el.style.borderColor = '#16a34a'; // green-600
         }
         
-        // 5. CAROUSEL LOGIC
+        // 6. CAROUSEL LOGIC
         const carousel = document.getElementById('priorityCarousel');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
