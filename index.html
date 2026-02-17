@@ -208,6 +208,7 @@
                     <a class="px-2 md:px-4 py-2 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all text-slate-500 hover:text-dark hover:bg-slate-100/50 whitespace-nowrap" href="#profile">Profile</a>
                     <a class="px-2 md:px-4 py-2 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all text-slate-500 hover:text-dark hover:bg-slate-100/50 whitespace-nowrap" href="#journey">Journey</a>
                     <a class="px-2 md:px-4 py-2 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all text-slate-500 hover:text-dark hover:bg-slate-100/50 whitespace-nowrap" href="#vision">Vision</a>
+                    <a class="px-2 md:px-4 py-2 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all text-slate-500 hover:text-dark hover:bg-slate-100/50 whitespace-nowrap" href="#priority">Priority</a>
                     <a class="px-2 md:px-4 py-2 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all text-slate-500 hover:text-dark hover:bg-slate-100/50 whitespace-nowrap" href="#vote">Vote</a>
                     <a class="px-2 md:px-4 py-2 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all text-slate-500 hover:text-dark hover:bg-slate-100/50 whitespace-nowrap" href="https://stories.jitendrakumarshrestha.com/" target="_blank">Blog</a>
                 </nav>
@@ -236,7 +237,7 @@
                         Jitendra <br> <span class="text-primary italic">Kumar</span> <br> Shrestha
                     </h1>
                     <p class="text-xl md:text-2xl text-gray-600 mt-4 mb-4">
-                        तपाईंको <span id="role-text" class="font-bold text-cGreen text-2xl md:text-3xl">भाई</span>, जितेन्द्र कुमार श्रेष्ठ
+                        तपाईंको <span id="role-text" class="font-bold text-green-600 text-2xl md:text-3xl">भाई</span>, जितेन्द्र कुमार श्रेष्ठ
             </p>
                     <p class="text-lg md:text-2xl font-nepali text-slate-500 mb-8 md:mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium italic">
                         नेपाली काँग्रेस ललितपुर जिल्ला सभापति। <br> समाज रूपान्तरणको ३ दशक लामो अविचलित यात्रा।
@@ -584,6 +585,79 @@
         </div>
     </section>
 
+    <!-- NEW SECTION: Priorities / Who I Work For (CAROUSEL) -->
+    <section id="priority" class="py-16 md:py-24 bg-slate-50 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-fade-in-up">
+                 <h2 class="text-4xl md:text-6xl font-black tracking-tighter font-display uppercase italic text-slate-900">Who I Serve</h2>
+                 <div class="h-1 w-16 bg-primary mx-auto mt-4 rounded-full"></div>
+                 <p class="text-lg font-nepali text-slate-500 mt-6">मेरो प्राथमिकता र प्रतिबद्धता</p>
+            </div>
+
+            <!-- Carousel Container -->
+            <div class="relative group max-w-7xl mx-auto">
+                 <!-- Left Arrow -->
+                 <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 bg-white p-3 rounded-full shadow-lg text-slate-800 hover:text-primary transition-all hidden md:flex opacity-0 group-hover:opacity-100">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                 </button>
+
+                <!-- Scroll Area -->
+                <div id="priorityCarousel" class="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-8 no-scrollbar px-4">
+                    <!-- Item 1: Tax Payers -->
+                    <div class="snap-center shrink-0 w-[280px] md:w-[320px] group/card bg-white p-4 rounded-[2rem] shadow-xl hover:-translate-y-2 transition-transform duration-300">
+                        <div class="aspect-square rounded-[1.5rem] overflow-hidden mb-6 relative">
+                             <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500" alt="Tax Payers">
+                             <div class="absolute inset-0 bg-black/5 group-hover/card:bg-transparent transition-colors"></div>
+                        </div>
+                        <h3 class="text-xl font-black font-display text-slate-900 text-center mb-2">Tax Payers</h3>
+                        <p class="text-center font-nepali text-slate-500 text-sm">तपाईंको करको सही सदुपयोग र सम्मान।</p>
+                    </div>
+
+                    <!-- Item 2: Gen Z -->
+                    <div class="snap-center shrink-0 w-[280px] md:w-[320px] group/card bg-white p-4 rounded-[2rem] shadow-xl hover:-translate-y-2 transition-transform duration-300">
+                        <div class="aspect-square rounded-[1.5rem] overflow-hidden mb-6 relative">
+                             <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500" alt="Gen Z">
+                        </div>
+                        <h3 class="text-xl font-black font-display text-slate-900 text-center mb-2">Gen Z</h3>
+                        <p class="text-center font-nepali text-slate-500 text-sm">नयाँ सोच र प्रविधियुक्त भविष्य।</p>
+                    </div>
+
+                     <!-- Item 3: IT & Innovation (Added) -->
+                     <div class="snap-center shrink-0 w-[280px] md:w-[320px] group/card bg-white p-4 rounded-[2rem] shadow-xl hover:-translate-y-2 transition-transform duration-300">
+                        <div class="aspect-square rounded-[1.5rem] overflow-hidden mb-6 relative">
+                             <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500" alt="IT Hub">
+                        </div>
+                        <h3 class="text-xl font-black font-display text-slate-900 text-center mb-2">IT & Innovation</h3>
+                        <p class="text-center font-nepali text-slate-500 text-sm">ललितपुरलाई IT Hub र Innovation Center बनाउने।</p>
+                    </div>
+
+                    <!-- Item 4: Education & Health -->
+                    <div class="snap-center shrink-0 w-[280px] md:w-[320px] group/card bg-white p-4 rounded-[2rem] shadow-xl hover:-translate-y-2 transition-transform duration-300">
+                        <div class="aspect-square rounded-[1.5rem] overflow-hidden mb-6 relative">
+                             <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500" alt="Education">
+                        </div>
+                        <h3 class="text-xl font-black font-display text-slate-900 text-center mb-2">Education & Health</h3>
+                        <p class="text-center font-nepali text-slate-500 text-sm">गुणस्तरीय शिक्षा र सुलभ स्वास्थ्य सेवा।</p>
+                    </div>
+                    
+                    <!-- Item 5: Tourism & Heritage (Others) -->
+                    <div class="snap-center shrink-0 w-[280px] md:w-[320px] group/card bg-white p-4 rounded-[2rem] shadow-xl hover:-translate-y-2 transition-transform duration-300">
+                        <div class="aspect-square rounded-[1.5rem] overflow-hidden mb-6 relative">
+                             <img src="https://images.unsplash.com/photo-1583569733075-801267b2cb70?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500" alt="Tourism">
+                        </div>
+                        <h3 class="text-xl font-black font-display text-slate-900 text-center mb-2">Tourism & Heritage</h3>
+                        <p class="text-center font-nepali text-slate-500 text-sm">कला, संस्कृति र सम्पदाको संरक्षण।</p>
+                    </div>
+                </div>
+
+                 <!-- Right Arrow -->
+                 <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 bg-white p-3 rounded-full shadow-lg text-slate-800 hover:text-primary transition-all hidden md:flex opacity-0 group-hover:opacity-100">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- NEW SECTION: Mock Voting (Namuna Matdan) -->
     <section id="vote" class="py-16 md:py-24 bg-blue-50 relative">
         <div class="container mx-auto px-6">
@@ -867,6 +941,20 @@
             // Visual feedback on row
             el.style.backgroundColor = '#ecfdf5'; // green-50
             el.style.borderColor = '#16a34a'; // green-600
+        }
+        
+        // 5. CAROUSEL LOGIC
+        const carousel = document.getElementById('priorityCarousel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        if(carousel && prevBtn && nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: 340, behavior: 'smooth' });
+            });
+            prevBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: -340, behavior: 'smooth' });
+            });
         }
     </script>
 </body>
